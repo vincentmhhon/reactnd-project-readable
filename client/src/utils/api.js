@@ -98,7 +98,7 @@ export const deletePost = id =>
       .then(data)
 
 // GET /posts/:id/comments
-export const getPostComments = id => 
+export const getPostComments = postid => 
   fetch(`${HOST}/posts/${id}/comments`, { headers })
     .then(res => res.json())
     .then(data)     
