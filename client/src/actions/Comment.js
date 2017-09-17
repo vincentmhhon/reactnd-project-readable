@@ -11,7 +11,7 @@ export const getPostCommentsSuccessfully = comments =>
 (
   {
     type: GET_POST_COMMENTS,
-    payload: comments
+    comments
   }
 )
 
@@ -25,7 +25,7 @@ export const addCommentSuccessfully = comment =>
 (
   {
     type: ADD_COMMENT,
-    payload: comment
+    comment
   }
 )
 
@@ -39,7 +39,7 @@ export const getCommentSuccessfully = comment =>
 (
   {
     type: GET_COMMENT,
-    payload: comment
+    comment
   }
 )
 
@@ -53,7 +53,7 @@ export const voteCommentSuccessfully = comment =>
 ( 
   {
     type: VOTE_COMMENT,
-    payload : comment
+    comment
   }
 
 )
@@ -69,7 +69,7 @@ export const updateCommentSuccessfully = comment =>
 ( 
   {
     type: UPDATE_COMMENT,
-    payload : comment
+    comment
   }
 
 )
@@ -85,7 +85,7 @@ export const deleteCommentSuccessfully = comment =>
 ( 
   {
     type: DELETE_COMMENT,
-    payload : comment
+    comment
   }
 
 )
