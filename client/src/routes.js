@@ -1,20 +1,12 @@
-import React from 'react'
+import React from 'react';
 import { Route, IndexRoute } from 'react-router'
-
-import App from './pages/App'
-import PostsIndex from './pages/PostsIndex';
-import PostsNew from './pages/PostsNew';
-import PostsShow from './pages/PostsShow';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-import ForgotPwd from './pages/ForgotPwd';
-import ValidateEmail from './pages/ValidateEmail';
-import Profile from './pages/Profile';
+import App from './components/App';
+import Home from './components/Home';
+import NewPost from './components/NewPost';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={PostsIndex} />
-    <Route path="posts/new" component={PostsNew} />
-    <Route path="posts/:id" component={PostsShow} />
+    <IndexRoute component={Home} />
+    <Route path="posts/new" component={NewPost} />
   </Route>
 );

@@ -48,13 +48,13 @@ export const addPost = post =>
     })
   })
     .then(res => res.json())
-    .then(data) 
+    .then(data => data) 
 
 // GET /posts/:id
 export const getPost = id => 
   fetch(`${HOST}/posts/${id}`, { headers })
     .then(res => res.json())
-    .then(data) 
+    .then(data => data) 
 
 // POST /posts/:id
 export const votePost = (id, option) => 
@@ -67,7 +67,7 @@ export const votePost = (id, option) =>
     body: JSON.stringify({ option })
   })
     .then(res => res.json())
-    .then(data) 
+    .then(data => data) 
 
 // PUT /posts/:id
 export const updatePost = post =>
@@ -84,7 +84,7 @@ export const updatePost = post =>
     })
   })
     .then(res => res.json())
-    .then(data)
+    .then(data => data)
 
 // DELETE /posts/:id
 export const deletePost = id => 
@@ -94,14 +94,14 @@ export const deletePost = id =>
       ...headers,
       'Content-Type': 'application/json'
     }})
-      .then(res => json())
-      .then(data)
+      .then(res => res.json())
+      .then(data => data)
 
 // GET /posts/:id/comments
 export const getPostComments = postid => 
-  fetch(`${HOST}/posts/${id}/comments`, { headers })
+  fetch(`${HOST}/posts/${postid}/comments`, { headers })
     .then(res => res.json())
-    .then(data)     
+    .then(data => data)     
 
 
 // POST /posts
@@ -121,13 +121,13 @@ export const addComment = comment =>
     })
   })
     .then(res => res.json())
-    .then(data) 
+    .then(data => data) 
 
 // GET /comments/:id
 export const getComment = id => 
   fetch(`${HOST}/comments/${id}`, { headers })
     .then(res => res.json())
-    .then(data) 
+    .then(data => data) 
 
 // POST /comments/:id
 export const voteComment = (id, option) => 
@@ -140,7 +140,7 @@ export const voteComment = (id, option) =>
     body: JSON.stringify({ option })
   })
     .then(res => res.json())
-    .then(data) 
+    .then(data => data) 
 
 // PUT /comments/:id
 export const updateComment = comment =>
@@ -156,7 +156,7 @@ export const updateComment = comment =>
     })
   })
     .then(res => res.json())
-    .then(data)
+    .then(data => data)
 
 // DELETE /comments/:id
 export const deleteComment = id => 
@@ -166,5 +166,5 @@ export const deleteComment = id =>
       ...headers,
       'Content-Type': 'application/json'
     }})
-      .then(res => json())
-      .then(data)
+      .then(res => res.json())
+      .then(data => data)

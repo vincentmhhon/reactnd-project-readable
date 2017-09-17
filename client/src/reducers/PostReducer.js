@@ -7,24 +7,20 @@ import {
   UPDATE_POST,
 } from '../actions/Post'
 
-const INITIAL_STATE = {
-  posts: [],
-  currentPost: null,
-  newPost: null,
-  deletedPost: null
-}
 
-export default function(state = INITIAL_STATE, action) {
+export default function(state = [], action) {
   switch(action.type) {
     case GET_ALL_POSTS:
-      return {...state, posts: action.payload }
+      return [...action.posts ]
     case GET_POST:
-      return {...state, currentPost: action.payload }
+      return {...state, currentPost: action.posts }
     case DELETE_POST:
-      return {...state, deletedPost: action.payload }
+      return {...state, posts: action.post }
     case ADD_POST:
       return {...state, newPost: action.payload }
     case UPDATE_POST:
       return {...state, currentPost: action.payload }
+    default:
+      return state
   }
 }

@@ -1,11 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './components/App'
-import registerServiceWorker from './registerServiceWorker'
-import { createStore, applyMiddleware, compose } from 'redux'
-import rootReducer from './reducers/RootReducer'
-import { Provider } from 'react-redux'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './components/App';
+import registerServiceWorker from './registerServiceWorker';
+import { createStore, applyMiddleware, compose } from 'redux';
+import RootReducer from './reducers/RootReducer';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Home from './components/Home';
+import thunk from 'redux-thunk';
 
 const logger = store => next => action => {
   console.group(action.type)
@@ -19,15 +22,17 @@ const logger = store => next => action => {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
-  reducer,
+  RootReducer,
   composeEnhancers(
-    applyMiddleware(logger)
+    applyMiddleware(thunk)
   )
 )
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <Route exact path="/" component={Home}/>
+    </Router>
   </Provider>,
   document.getElementById('root')
 )

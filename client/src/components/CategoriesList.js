@@ -1,15 +1,38 @@
-import React from 'react';
-import FilterLink from './FilterLink';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getCategories } from '../actions/Category';
 
-const CategoriesLink = ({categories}) => (
-  <p>
-    {categories.map(category =>
-      <FilterLink filter={category.path}>
-        {category.name}&nbsp;
-      </FilterLink>
-    )}
-  </p>
-);
+class CategoriesList extends Component {
+  componentWillMount() {
+    this.props.getCategories();
+  }
 
-export default CategoriesLink;
+  render() {
+    const { categories } = this.props;
+    return (
+      <p>
+        {categories.map(category =>
+          <Link>
+             {category.name}
+          </Link>
+        )}
+      </p>
+    )
+  }
+}
 
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCategories: () => {
+      dispatch(getCategories())
+    }
+  }
+} 
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesList);
