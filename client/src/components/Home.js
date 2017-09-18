@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import CategoriesList from './CategoriesList';
 import PostsList from './PostsList';
+import CategoriesList from 
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <PostsList />
+        <CategoriesList />
+        <PostsList {...this.props} />
       </div>
     );
   }

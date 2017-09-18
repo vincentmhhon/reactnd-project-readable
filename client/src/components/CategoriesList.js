@@ -13,7 +13,7 @@ class CategoriesList extends Component {
     return (
       <p>
         {categories.map(category =>
-          <Link>
+          <Link to={`/post/${category.path}`}>
              {category.name}
           </Link>
         )}

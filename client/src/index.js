@@ -6,8 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import RootReducer from './reducers/RootReducer';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Home from './components/Home';
+
 import thunk from 'redux-thunk';
 
 const logger = store => next => action => {
@@ -30,9 +29,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <Route exact path="/" component={Home}/>
-    </Router>
+
   </Provider>,
   document.getElementById('root')
 )
