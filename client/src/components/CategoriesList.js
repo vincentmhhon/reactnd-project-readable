@@ -14,17 +14,19 @@ class CategoriesList extends Component {
     return (      
       <p>
         <div><b>Categories</b></div>
-        <div>
-          <Link to="/" onClick={e => {
-                                   this.props.selectCategory('All');
-                                }}
-          >
-            All
-          </Link>
-        </div>
+        <ul id="menu">
+          <li>
+            <Link to="/" onClick={e => {
+                                    this.props.selectCategory('All');
+                                  }}
+            >
+              All
+            </Link>
+          </li>
+
 
         {categories.map(category =>
-        <div>
+        <li>
           <Link key={`${category.path}`} to={`/${category.path}`} onClick={e => {
                                                         this.props.selectCategory(`${category.path}`);
                                                       }}
@@ -32,9 +34,9 @@ class CategoriesList extends Component {
           >
              {category.name}
           </Link>
-          &nbsp;
-        </div>          
+        </li>          
         )}
+        </ul>
       </p>
     );
   }
