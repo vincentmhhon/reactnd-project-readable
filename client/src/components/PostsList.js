@@ -10,16 +10,31 @@ class PostsList extends Component {
 
   render() {
     const posts = this.props.posts;
-    const selectedCategory = this.props.selectedCategory;
+    const selectCategory = this.props.selectCategory;
     if (posts) {
       return (         
         <div>
-          <div><b>Posts</b></div>
+          <div><b>{selectCategory} Posts</b></div>
+          <table id="posts">
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Score</th>
+            </tr>            
           {posts.map(post =>
-            <div>
-              {post.title}
-            </div>
+            <tr>
+              <td>
+               <Link key={`${post.id}`} to={`/posts/${post.id}`}>{post.title}</Link>
+              </td>
+              <td>
+               {post.author}
+              </td>
+              <td>
+                {post.voteScore}
+              </td>
+            </tr>
           )}
+          </table>
         </div>        
       )
     } else {

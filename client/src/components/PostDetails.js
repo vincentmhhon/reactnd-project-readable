@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 
 class PostDetails extends Component {
   static contextTypes = {
@@ -24,5 +23,28 @@ class PostDetails extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    activePost: state.activePost
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCategories: () => {
+      dispatch(getCategories())
+    },
+    selectCategory: (category) => {
+      dispatch(selectCategory(category))
+      if (category === 'All' || category === '' || category === undefined) {        
+        dispatch(getAllPosts())
+      } else {
+        dispatch(getCategoryPosts(category))
+      }
+
+    },
+  };
+}; 
 
 export default PostDetails;

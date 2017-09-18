@@ -31,3 +31,18 @@ ul#menu li a {
 ul#menu li a:hover {
   background-color: #111111;
 }
+
+table#posts {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table#posts td, th {
+  border: 1px solid rgba(221, 221, 221, 0.56);
+  text-align: left;
+  padding: 8px;
+}
+
+table#posts tr:nth-child(even) {
+  background-color: rgba(221, 221, 221, 0.56);
+}

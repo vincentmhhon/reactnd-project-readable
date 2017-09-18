@@ -13,7 +13,6 @@ class CategoriesList extends Component {
     const { categories } = this.props;
     return (      
       <p>
-        <div><b>Categories</b></div>
         <ul id="menu">
           <li>
             <Link to="/" onClick={e => {
