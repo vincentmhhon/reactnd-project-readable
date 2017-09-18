@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getAllPosts,getCategoryPosts } from '../actions/Post';
 
 class PostsList extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getPosts(this.props.selectCategory);
   }
 

@@ -11,8 +11,6 @@ export default function(state = {}, action) {
   switch(action.type) {
     case GET_POST:
       return action.post;
-      case GET_CATEGORY_POSTS:
-      return action.post;
     case VOTE_POST:
       return action.post;
     case DELETE_POST:

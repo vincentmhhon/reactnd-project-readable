@@ -1,19 +1,15 @@
 import React, { Component, PropTypes } from 'react';
+import { getPost } from '../actions/Post';
+import { connect } from 'react-redux';
 
 class PostDetails extends Component {
-  static contextTypes = {
-    router: PropTypes.object
-  };
-
-  componentWillUnmount() {
-    this.props.resetMe();
-  }
 
   componentDidMount() {
-    this.props.fetchPost(this.props.postId);
+    this.props.getPost(this.props.match.params.postId);
   }
 
   render() {
+    const post = this.props.post;
     return (
       <div className="container">
         <h3>{post.title}</h3>
@@ -26,25 +22,16 @@ class PostDetails extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    activePost: state.activePost
+    post: state.activePost
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCategories: () => {
-      dispatch(getCategories())
-    },
-    selectCategory: (category) => {
-      dispatch(selectCategory(category))
-      if (category === 'All' || category === '' || category === undefined) {        
-        dispatch(getAllPosts())
-      } else {
-        dispatch(getCategoryPosts(category))
-      }
-
+    getPost: (postId) => {
+      dispatch(getPost(postId))
     },
   };
 }; 
 
-export default PostDetails;
+export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);
