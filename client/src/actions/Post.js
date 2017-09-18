@@ -30,9 +30,9 @@ export const getCategoryPostsSuccessfully = (posts) =>
   }
 );
 
-export const getCgetCategoryPosts = () => (dispatch) => (
+export const getCategoryPosts = (category) => (dispatch) => (
   api
-    .getCategoryPost
+    .getCategoryPost(category)
     .then(posts => dispatch(getCategoryPostsSuccessfully(posts)))
 );
 

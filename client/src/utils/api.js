@@ -20,7 +20,7 @@ export const getCategories = () =>
 
 //GET /:category/posts
 export const getCategoryPost = category =>
-  fetch(`${HOST}/${category}/posts`)
+  fetch(`${HOST}/${category}/posts`, { headers })
     .then(res => res.json())
     .then(data => data)
 
