@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addPost, setPost } from '../actions/Post';
+import Header from './Header';
 
 class NewPost extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addPost(this.props.post);
+    this.props.history.push("/");
   }
 
   handleInput(e) {
@@ -23,34 +25,39 @@ class NewPost extends Component {
     console.log(categories);
     return (
       <div>
+        <Header />
         <h2>Add Post</h2>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label htmlFor="category">
-            <p>Category</p>
-            <select name="category" id="category" value={post.category} onChange={this.handleInput.bind(this)} required>
-               <option value="">Please select</option>
-               {categories.map((category) => 
-                 <option key={`${category.name}`} value={`${category.name}`} >{`${category.name}`} </option>
-               )
-              }
-            </select>
-          </label>
-          <label htmlFor="author">
-            <p>Your Name</p>
-            <input type="text" placeholder="Your name" id="author" name="author" value={post.author}
-              onChange={this.handleInput.bind(this)} required />
-          </label>
-          <label htmlFor="title">
-            <p>Title</p>
-            <input type="text" placeholder="Title" id="title" name="title" value={post.title}
-              onChange={this.handleInput.bind(this)} required/>
-          </label>
-          <label htmlFor="body">
-          <p>Body</p>
-          <input type="textarea" placeholder="Type in something" id="body" name="body" value={post.body}
-            onChange={this.handleInput.bind(this)} required/>
-        </label>
-        <input type="submit" value="Add"/> 
+        <form className="form-style-1" onSubmit={this.handleSubmit.bind(this)}>
+          <ul className="form-style-1">  
+            <li>
+              <label htmlFor="category">Category <span className="required">*</span></label>
+                <select name="category" id="category" value={post.category} onChange={this.handleInput.bind(this)} required className="field-select">
+                <option value="">Please select</option>
+                {categories.map((category) => 
+                  <option key={`${category.name}`} value={`${category.name}`} >{`${category.name}`} </option>
+                )
+                }
+                </select>
+            </li>
+            <li>
+              <label htmlFor="author">Your Name <span className="required">*</span></label>
+              <input type="text" placeholder="Your name" id="author" name="author" value={post.author}
+              onChange={this.handleInput.bind(this)} required className="field-long" />
+            </li>
+            <li>
+              <label htmlFor="title">Title <span className="required">*</span></label>
+              <input type="text" placeholder="Title" id="title" name="title" value={post.title}
+              onChange={this.handleInput.bind(this)} required className="field-long"/>
+            </li>
+            <li>
+              <label htmlFor="title">Body <span className="required">*</span></label>
+              <textarea placeholder="Type in something" id="body" name="body" value={post.body}
+              onChange={this.handleInput.bind(this)} required className="field-long field-textarea"/>
+            </li> 
+            <li>
+              <input className="button" type="submit" value="Confirm"/>
+            </li> 
+          </ul>
         </form>
       </div>
     )
