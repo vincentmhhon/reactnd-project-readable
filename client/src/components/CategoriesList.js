@@ -55,12 +55,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     selectCategory: (category) => {
       dispatch(selectCategory(category))
-      if (category === 'All' || category === '' || category === undefined) {        
-        dispatch(getAllPosts())
-      } else {
-        dispatch(getCategoryPosts(category))
-      }
-
     },
   };
 }; 

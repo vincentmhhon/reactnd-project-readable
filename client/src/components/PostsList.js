@@ -8,6 +8,10 @@ class PostsList extends Component {
     this.props.getPosts(this.props.selectCategory);
   }
 
+  componentWillReceiveProps(nextProp) {
+    this.props.getPosts(nextProp.selectCategory);
+  }
+
   render() {
     const posts = this.props.posts;
     const selectCategory = this.props.selectCategory;
