@@ -16,6 +16,10 @@ export default function(state = [], action) {
       return [...action.posts ];
     case ADD_POST:
       return [...state, action.post];
+    case UPDATE_POST:
+      return state.map(post =>
+         (post.id === {...action.post}.id)?{...action.post}:post
+      );
     default:
       return state
   }

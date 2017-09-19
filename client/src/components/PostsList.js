@@ -25,6 +25,7 @@ class PostsList extends Component {
           <table id="posts">
             <thead>
               <tr>
+                <th></th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Score</th>
@@ -34,6 +35,12 @@ class PostsList extends Component {
             <tbody>       
           {posts.map(post =>
             <tr key={`${post.id}`} >
+              <td>
+              <Link className="button" to={`/post/edit/${post.id}`} onClick={e => {
+                                                                      this.props.setPost(post);
+                                                                    }} >
+                Edit</Link>
+              </td>
               <td>
                <Link to={`/posts/${post.id}`}>{post.title}</Link>
               </td>
@@ -50,6 +57,7 @@ class PostsList extends Component {
           )}
           </tbody>
           </table>
+          <br />
           <Link className="button" to='/post/new' onClick={e => {
                                                         this.props.newPost();
                                                       }}
@@ -77,13 +85,16 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getPosts: (category) => {
       if (category === 'All' || category === '' || category === undefined) {        
-        dispatch(getAllPosts())
+        dispatch(getAllPosts());
       } else {
-        dispatch(getCategoryPosts(category))
+        dispatch(getCategoryPosts(category));
       }
     },
     newPost: () => {
-      dispatch(setPost({category: '', author: '', title: '', body: ''}))
+      dispatch(setPost({category: '', author: '', title: '', body: ''}));
+    },
+    setPost: (post) => {
+      dispatch(setPost(post));
     }
   }
 } 

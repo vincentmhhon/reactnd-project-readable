@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './Home';
 import PostDetails from './PostDetails';
 import NewPost from './NewPost';
+import EditPost from './EditPost';
 import './App.css'
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
         <Route path="/:category" exact component={Home} />
         <Route path="/posts/:postId" exact component={PostDetails} />
         <Route path="/post/new" exact component={NewPost} />
+        <Route path="/post/edit/:postId" exact component={EditPost} />
       </Switch>
     </Router>
   )}

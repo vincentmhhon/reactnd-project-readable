@@ -19,7 +19,7 @@ export default function(state = {}, action) {
     case ADD_POST:
       return action.post;
     case UPDATE_POST:
-      return action.post;
+      return {...action.post};
     case SET_POST:
       return action.post;
     default:
