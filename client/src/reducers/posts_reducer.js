@@ -12,8 +12,10 @@ export default function(state = [], action) {
   switch(action.type) {
     case GET_ALL_POSTS:
       return [...action.posts ];
-      case GET_CATEGORY_POSTS:
+    case GET_CATEGORY_POSTS:
       return [...action.posts ];
+    case ADD_POST:
+      return [...state, action.post];
     default:
       return state
   }

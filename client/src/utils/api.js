@@ -1,4 +1,4 @@
-import { uuidv1 } from 'uuid/v1'
+import uuid from 'uuid4'
 
 const HOST = 'http://localhost:3001'
 
@@ -39,7 +39,7 @@ export const addPost = post =>
       'Content-Type': 'application/json'
     },    
     body: JSON.stringify({ 
-      id: uuidv1(),
+      id: uuid(),
       timestamp: Date.now(),
       title: post.title,
       body: post.body,
@@ -113,7 +113,7 @@ export const addComment = comment =>
       'Content-Type': 'application/json'
     },    
     body: JSON.stringify({ 
-      id: uuidv1(),
+      id: uuid(),
       timestamp: Date.now(),
       body: comment.body,
       author: comment.author, 
