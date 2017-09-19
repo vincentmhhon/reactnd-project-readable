@@ -13,7 +13,9 @@ export const getAllPostsSuccessfully = (posts) =>
 (
   {
     type: GET_ALL_POSTS,
-    posts
+    posts: posts.filter(post => (
+      post.deleted === false 
+    ))
   }
 );
 

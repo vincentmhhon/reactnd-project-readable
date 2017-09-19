@@ -20,6 +20,10 @@ export default function(state = [], action) {
       return state.map(post =>
          (post.id === {...action.post}.id)?{...action.post}:post
       );
+    case DELETE_POST:
+      return state.map(post =>
+        (post.id === {...action.post}.id)?{...post,deleted: true}:post
+     );
     default:
       return state
   }

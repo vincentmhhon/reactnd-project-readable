@@ -60,6 +60,19 @@ table#posts tr:nth-child(even) {
   cursor: pointer;
 }
 
+.redButton {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 .form-style-1 {
   margin:10px auto;
   padding: 5px 5px 5px 5px;

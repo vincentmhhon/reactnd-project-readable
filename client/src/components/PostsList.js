@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllPosts,getCategoryPosts, setPost } from '../actions/Post';
+import { getAllPosts,getCategoryPosts, setPost, deletePost } from '../actions/Post';
 import { formatTimestamp } from '../utils/helper';
 
 class PostsList extends Component {
@@ -40,6 +40,10 @@ class PostsList extends Component {
                                                                       this.props.setPost(post);
                                                                     }} >
                 Edit</Link>
+              <Link className="redButton" to="/" onClick={e => {
+                  this.props.deletePost(`${post.id}`);
+                }} >
+                Delete</Link>
               </td>
               <td>
                <Link to={`/posts/${post.id}`}>{post.title}</Link>
@@ -95,6 +99,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     setPost: (post) => {
       dispatch(setPost(post));
+    },
+    deletePost: (id) => {
+      dispatch(deletePost(id)).then(
+      dispatch(getAllPosts()))
     }
   }
 } 

@@ -70,7 +70,7 @@ export const votePost = (id, option) =>
     .then(data => data) 
 
 // PUT /posts/:id
-export const updatePost = post =>
+export const updatePost = (post) =>
   fetch(`${HOST}/posts/${post.id}`, {
     method: 'PUT',
     headers: {
@@ -87,7 +87,7 @@ export const updatePost = post =>
     .then(data => data)
 
 // DELETE /posts/:id
-export const deletePost = id => 
+export const deletePost = (id) => 
   fetch(`${HOST}/posts/${id}`, {
     method: 'DELETE',
     headers: {
@@ -98,14 +98,14 @@ export const deletePost = id =>
       .then(data => data)
 
 // GET /posts/:id/comments
-export const getPostComments = postid => 
+export const getPostComments = (postid) => 
   fetch(`${HOST}/posts/${postid}/comments`, { headers })
     .then(res => res.json())
     .then(data => data)     
 
 
 // POST /posts
-export const addComment = comment => 
+export const addComment = (comment) => 
   fetch(`${HOST}/comments`, {
     method: 'POST',
     headers: {
@@ -124,7 +124,7 @@ export const addComment = comment =>
     .then(data => data) 
 
 // GET /comments/:id
-export const getComment = id => 
+export const getComment = (id) => 
   fetch(`${HOST}/comments/${id}`, { headers })
     .then(res => res.json())
     .then(data => data) 
