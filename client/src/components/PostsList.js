@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getAllPosts,getCategoryPosts } from '../actions/Post';
+import { formatTimestamp } from '../utils/helper';
 
 class PostsList extends Component {
   componentDidMount() {
@@ -24,6 +25,7 @@ class PostsList extends Component {
               <th>Title</th>
               <th>Author</th>
               <th>Score</th>
+              <th>Posted Date</th>
             </tr>            
           {posts.map(post =>
             <tr>
@@ -35,6 +37,9 @@ class PostsList extends Component {
               </td>
               <td>
                 {post.voteScore}
+              </td>
+              <td>
+                {formatTimestamp(`${post.timestamp}`)}
               </td>
             </tr>
           )}
