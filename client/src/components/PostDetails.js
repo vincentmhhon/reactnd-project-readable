@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { getPost } from '../actions/Post';
 import { connect } from 'react-redux';
 

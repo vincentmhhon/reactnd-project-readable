@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getCategories, selectCategory } from '../actions/Category';
-import {getCategoryPosts, getAllPosts } from '../actions/Post';
 
 class CategoriesList extends Component {
   componentWillMount() {
