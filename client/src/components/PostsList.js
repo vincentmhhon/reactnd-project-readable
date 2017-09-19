@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllPosts,getCategoryPosts } from '../actions/Post';
+import { getAllPosts,getCategoryPosts, setPost } from '../actions/Post';
 import { formatTimestamp } from '../utils/helper';
 
 class PostsList extends Component {
@@ -10,7 +10,9 @@ class PostsList extends Component {
   }
 
   componentWillReceiveProps(nextProp) {
-    this.props.getPosts(nextProp.selectCategory);
+    if (this.props.selectCategory !== nextProp.selectCategory) {
+      this.props.getPosts(nextProp.selectCategory);
+    }
   }
 
   render() {
@@ -21,16 +23,19 @@ class PostsList extends Component {
         <div>
           <div><b>{selectCategory} Posts</b></div>
           <table id="posts">
-            <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Score</th>
-              <th>Posted Date</th>
-            </tr>            
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Score</th>
+                <th>Posted Date</th>
+              </tr>   
+            </thead>  
+            <tbody>       
           {posts.map(post =>
-            <tr>
+            <tr key={`${post.id}`} >
               <td>
-               <Link key={`${post.id}`} to={`/posts/${post.id}`}>{post.title}</Link>
+               <Link to={`/posts/${post.id}`}>{post.title}</Link>
               </td>
               <td>
                {post.author}
@@ -43,7 +48,14 @@ class PostsList extends Component {
               </td>
             </tr>
           )}
+          </tbody>
           </table>
+          <Link className="button" to='/post/new' onClick={e => {
+                                                        this.props.newPost();
+                                                      }}
+          >
+          Add Post
+          </Link>
         </div>        
       )
     } else {
@@ -69,6 +81,9 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(getCategoryPosts(category))
       }
+    },
+    newPost: () => {
+      dispatch(setPost({category: '', author: '', title: '', body: ''}))
     }
   }
 } 

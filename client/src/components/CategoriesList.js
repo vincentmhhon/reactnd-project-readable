@@ -12,7 +12,7 @@ class CategoriesList extends Component {
   render() {
     const { categories } = this.props;
     return (      
-      <p>
+      <div>
         <ul id="menu">
           <li>
             <Link to="/" onClick={e => {
@@ -25,8 +25,8 @@ class CategoriesList extends Component {
 
 
         {categories.map(category =>
-        <li>
-          <Link key={`${category.path}`} to={`/${category.path}`} onClick={e => {
+        <li key={`${category.path}`}>
+          <Link  to={`/${category.path}`} onClick={e => {
                                                         this.props.selectCategory(`${category.path}`);
                                                       }}
           
@@ -36,7 +36,7 @@ class CategoriesList extends Component {
         </li>          
         )}
         </ul>
-      </p>
+      </div>
     );
   }
 }

@@ -4,6 +4,7 @@ import {
   DELETE_POST,
   ADD_POST,
   UPDATE_POST,
+  SET_POST,
 } from '../actions/Post'
 
 
@@ -18,6 +19,8 @@ export default function(state = {}, action) {
     case ADD_POST:
       return action.post;
     case UPDATE_POST:
+      return action.post;
+    case SET_POST:
       return action.post;
     default:
       return state
