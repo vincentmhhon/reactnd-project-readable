@@ -16,8 +16,8 @@ class PostsList extends Component {
   }
 
   render() {
-    const posts = this.props.posts;
-    const selectCategory = this.props.selectCategory;
+    var posts = this.props.posts;
+    var selectCategory = this.props.selectCategory;
     if (posts) {
       return (         
         <div>
@@ -40,10 +40,10 @@ class PostsList extends Component {
                                                                       this.props.setPost(post);
                                                                     }} >
                 Edit</Link>
-              <Link className="redButton" to="/" onClick={e => {
+              <Link type="button" className="redButton" to="/" onClick={e => {
                   this.props.deletePost(`${post.id}`);
-                }} >
-                Delete</Link>
+                }} > Delete
+              </Link>
               </td>
               <td>
                <Link to={`/posts/${post.id}`}>{post.title}</Link>
@@ -101,8 +101,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setPost(post));
     },
     deletePost: (id) => {
-      dispatch(deletePost(id)).then(
-      dispatch(getAllPosts()))
+      dispatch(deletePost(id));
     }
   }
 } 
