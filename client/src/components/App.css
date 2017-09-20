@@ -32,18 +32,33 @@ ul#menu li a:hover {
   background-color: #111111;
 }
 
-table#posts {
+.post {
   border-collapse: collapse;
   width: 100%;
 }
 
-table#posts td, th {
+.post thead {
+  border-bottom: 2px solid grey;
+}
+
+.post td {
+  border-bottom: 3px solid grey;
+  text-align: left;
+  padding: 8px;
+}
+
+.list {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.list td, th {
   border: 1px solid rgba(221, 221, 221, 0.56);
   text-align: left;
   padding: 8px;
 }
 
-table#posts tr:nth-child(even) {
+.list tr:nth-child(even) {
   background-color: rgba(221, 221, 221, 0.56);
 }
 

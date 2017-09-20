@@ -1,25 +1,29 @@
 import {
-  GET_ALL_POSTS,
-  GET_POST,
-  VOTE_POST,
-  DELETE_POST,
-  ADD_POST,
-  UPDATE_POST,
-} from '../actions/Post'
-
+  GET_POST_COMMENTS,
+  ADD_COMMENT,
+  UPDATE_COMMENT,
+  DELETE_COMMENT,
+  VOTE_COMMENT,
+} from '../actions/Comment'
 
 export default function(state = [], action) {
   switch(action.type) {
-    case GET_ALL_POSTS:
-      return [...action.posts ]
-    case GET_POST:
-      return {...state, currentPost: action.posts }
-    case DELETE_POST:
-      return {...state, posts: action.post }
-    case ADD_POST:
-      return {...state, newPost: action.payload }
-    case UPDATE_POST:
-      return {...state, currentPost: action.payload }
+    case GET_POST_COMMENTS:
+      return [...action.comments ];
+    case ADD_COMMENT:
+      return [...state, action.comment];
+    case UPDATE_COMMENT:
+      return state.map(comment =>
+         (comment.id === {...action.comment}.id)?{...action.comment}:comment
+      );
+    case DELETE_COMMENT:
+      return state.filter(comment =>
+        (comment.id !== {...action.comment}.id)
+      );
+    case VOTE_COMMENT: 
+      return state.map(comment =>
+        (comment.id === {...action.comment}.id)?{...action.comment}:comment
+      );
     default:
       return state
   }

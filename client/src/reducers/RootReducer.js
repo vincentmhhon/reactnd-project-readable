@@ -1,10 +1,11 @@
-import { combineReducers } from 'redux'
-import posts_reducer from './posts_reducer'
-import post_reducer from './post_reducer'
-import comments_reducer from './comments_reducer'
-import categories_reducer from './categories_reducer'
-import category_reducer from './category_reducer'
-import sort_posts_reducer from './sort_posts_reducer'
+import { combineReducers } from 'redux';
+import posts_reducer from './posts_reducer';
+import post_reducer from './post_reducer';
+import comments_reducer from './comments_reducer';
+import comment_reducer from './comment_reducer';
+import categories_reducer from './categories_reducer';
+import category_reducer from './category_reducer';
+import sort_posts_reducer from './sort_posts_reducer';
 
 export default combineReducers({
   posts: posts_reducer,
@@ -12,4 +13,6 @@ export default combineReducers({
   categories: categories_reducer,
   selectCategory: category_reducer,
   sortKey: sort_posts_reducer,
-})
+  comments: comments_reducer,
+  activeComment: comment_reducer,
+});

@@ -33,7 +33,7 @@ class PostsList extends Component {
           <div>
           <br />
           <b>{selectCategory} Posts</b></div>
-          <table id="posts">
+          <table className="list">
             <thead>
               <tr>
                 <th></th>
@@ -70,12 +70,7 @@ class PostsList extends Component {
           </tbody>
           </table>
           <br />
-          <Link className="button" to='/post/new' onClick={e => {
-                                                        this.props.newPost();
-                                                      }}
-          >
-          Add Post
-          </Link>
+          <Link className="button" to='/post/new' onClick={e => { this.props.newPost() }}>Add Post</Link>
         </div>        
       )
     } else {
