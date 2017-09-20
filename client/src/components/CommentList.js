@@ -6,13 +6,19 @@ import { formatTimestamp } from '../utils/helper';
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
 
-class PostsList extends Component {
-  componentDidMount() {
+class CommentList extends Component {
+  componentWillMount() {
     this.props.getPostComments(this.props.post.id);
+  }
+
+  componentWillReceiveProps(nextProp) {
+    if (this.props.post.id !== nextProp.post.id)
+      this.props.getPostComments(this.props.post.id);
   }
 
   render() {
     var comments = this.props.comments;
+    var post = this.props.post;
     if (comments) {
       return (         
         <div>
@@ -32,9 +38,8 @@ class PostsList extends Component {
           {comments.map(comment =>
             <tr key={`${comment.id}`} >
               <td>
-              <Link className="button" to={`/comment/edit/${comment.id}`} onClick={e => {this.props.setComment(comment) }} >
-                Edit</Link>
-              <button className="redButton" onClick={e => { this.props.deleteComment(`${comment.id}`) }}>Delete</button>
+                <Link className="button" to={`/edit/${post.category}/${post.id}/comment/${comment.id}`} onClick={e => {this.props.setComment(comment) }} >Edit</Link>
+                <button className="redButton" onClick={e => { this.props.deleteComment(`${comment.id}`) }}>Delete</button>
               </td>
               <td>
                 {comment.body}
@@ -93,4 +98,4 @@ const mapDispatchToProps = (dispatch) => {
     },
   }
 } 
-export default connect(mapStateToProps, mapDispatchToProps)(PostsList);
+export default connect(mapStateToProps, mapDispatchToProps)(CommentList);

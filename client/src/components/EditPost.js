@@ -21,7 +21,7 @@ class EditPost extends Component {
     const post = this.props.post;
     return (
       <div>
-        <Header />
+      <Header link="/" linkName="Back to Home" />
         <h2>Edit Post</h2>
         <form className="form-style-1" onSubmit={this.handleSubmit.bind(this)}>
           <ul className="form-style-1">  

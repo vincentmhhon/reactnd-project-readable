@@ -47,12 +47,12 @@ class PostsList extends Component {
           {posts.map(post =>
             <tr key={`${post.id}`} >
               <td>
-              <Link className="button" to={`/post/edit/${post.id}`} onClick={e => {this.props.setPost(post) }} >
+              <Link className="button" to={`/edit/${post.category}/${post.id}`} onClick={e => {this.props.setPost(post) }} >
                 Edit</Link>
-              <button className="redButton" onClick={e => { this.props.deletePost(`${post.id}`) }}>Delete</button>
+              <Link className="redButton" to="/" onClick={e => { this.props.deletePost(`${post.id}`) }}>Delete</Link>
               </td>
               <td>
-               <Link to={`/posts/${post.id}`}>{post.title}</Link>
+               <Link to={`/${post.category}/${post.id}`}>{post.title}</Link>
               </td>
               <td>
                {post.author}
@@ -70,7 +70,7 @@ class PostsList extends Component {
           </tbody>
           </table>
           <br />
-          <Link className="button" to='/post/new' onClick={e => { this.props.newPost() }}>Add Post</Link>
+          <Link className="button" to='/new/post' onClick={e => { this.props.newPost() }}>Add Post</Link>
         </div>        
       )
     } else {

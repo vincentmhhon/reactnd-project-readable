@@ -17,7 +17,7 @@ class PostDetails extends Component {
     const post = this.props.post;
     return (
       <div>
-        <Header />
+        <Header link="/" linkName="Back to Home" />
         <table className="post">
           <thead>
             <th>

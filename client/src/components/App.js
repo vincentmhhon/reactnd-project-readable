@@ -4,6 +4,8 @@ import Home from './Home';
 import PostDetails from './PostDetails';
 import NewPost from './NewPost';
 import EditPost from './EditPost';
+import NewComment from './NewComment';
+import EditComment from './EditComment';
 import './App.css'
 
 class App extends Component {
@@ -12,10 +14,12 @@ class App extends Component {
     <Router>
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route path="/:category" exact component={Home} />
-        <Route path="/posts/:postId" exact component={PostDetails} />
-        <Route path="/post/new" exact component={NewPost} />
-        <Route path="/post/edit/:postId" exact component={EditPost} />
+        <Route exact path="/new/post" component={NewPost} />
+        <Route exact path="/new/comment" component={NewComment} />
+        <Route exact path="/edit/:category/:postId/comment/:commentId" component={EditComment} />
+        <Route exact path="/edit/:category/:postId" component={EditPost} />
+        <Route exact path="/:category" component={Home} />
+        <Route exact path="/:category/:postId" component={PostDetails} />
       </Switch>
     </Router>
   )}
