@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllPosts,getCategoryPosts, setPost, deletePost } from '../actions/Post';
+import { getAllPosts,getCategoryPosts, setPost, deletePost, votePost } from '../actions/Post';
 import { formatTimestamp } from '../utils/helper';
+import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
+import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
 
 class PostsList extends Component {
   componentDidMount() {
@@ -36,14 +38,9 @@ class PostsList extends Component {
           {posts.map(post =>
             <tr key={`${post.id}`} >
               <td>
-              <Link className="button" to={`/post/edit/${post.id}`} onClick={e => {
-                                                                      this.props.setPost(post);
-                                                                    }} >
+              <Link className="button" to={`/post/edit/${post.id}`} onClick={e => {this.props.setPost(post) }} >
                 Edit</Link>
-              <Link type="button" className="redButton" to="/" onClick={e => {
-                  this.props.deletePost(`${post.id}`);
-                }} > Delete
-              </Link>
+              <button className="redButton" onClick={e => { this.props.deletePost(`${post.id}`) }}>Delete</button>
               </td>
               <td>
                <Link to={`/posts/${post.id}`}>{post.title}</Link>
@@ -52,7 +49,9 @@ class PostsList extends Component {
                {post.author}
               </td>
               <td>
-                {post.voteScore}
+                {post.voteScore}&nbsp;&nbsp;&nbsp;&nbsp;
+                <FaThumbsOUp onClick={e => { this.props.votePost(`${post.id}`, "upVote") }} />
+                <FaThumbsODown onClick={e => { this.props.votePost(`${post.id}`, "downVote") }} />
               </td>
               <td>
                 {formatTimestamp(`${post.timestamp}`)}
@@ -102,6 +101,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     deletePost: (id) => {
       dispatch(deletePost(id));
+    },
+    votePost: (id, option) => {
+      dispatch(votePost(id, option));
     }
   }
 } 
