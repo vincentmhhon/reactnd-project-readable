@@ -14,6 +14,4 @@ To install and start the API server, run the following commands:
 * `npm install`
 * `npm start`
 
-### Include An Authorization Header
-
 The project was bootstrapped with [Create ReactApp]
