@@ -7,7 +7,7 @@ class NewComment extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.addComment(this.props.comment);
-    this.props.history.push("/");
+    this.props.history.goBack();
   }
 
   handleInput(e) {
@@ -19,33 +19,17 @@ class NewComment extends Component {
   
   render() {
     const comment = this.props.comment;
-    const categories = this.props.categories;
-    
+    const post = this.props.post;
     return (
       <div>
-      <Header link="/" linkName="Back to Home" />
+      <Header link={`/${post.category}/${post.id}`} linkName={`Back to Post: ${post.title}`} />
         <h2>Add Comment</h2>
         <form className="form-style-1" onSubmit={this.handleSubmit.bind(this)}>
           <ul className="form-style-1">  
             <li>
-              <label htmlFor="category">Category <span className="required">*</span></label>
-                <select name="category" id="category" value={comment.category} onChange={this.handleInput.bind(this)} required className="field-select">
-                <option value="">Please select</option>
-                {categories.map((category) => 
-                  <option key={`${category.name}`} value={`${category.name}`} >{`${category.name}`} </option>
-                )
-                }
-                </select>
-            </li>
-            <li>
               <label htmlFor="author">Your Name <span className="required">*</span></label>
               <input type="text" placeholder="Your name" id="author" name="author" value={comment.author}
               onChange={this.handleInput.bind(this)} required className="field-long" />
-            </li>
-            <li>
-              <label htmlFor="title">Title <span className="required">*</span></label>
-              <input type="text" placeholder="Title" id="title" name="title" value={comment.title}
-              onChange={this.handleInput.bind(this)} required className="field-long"/>
             </li>
             <li>
               <label htmlFor="body">Body <span className="required">*</span></label>
@@ -66,7 +50,7 @@ class NewComment extends Component {
 const mapStateToProps = (state) => {
   return {
     comment: state.activeComment,
-    categories: state.categories,
+    post: state.activePost,
   }
 };
 

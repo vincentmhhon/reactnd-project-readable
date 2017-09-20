@@ -20,15 +20,17 @@ class PostDetails extends Component {
         <Header link="/" linkName="Back to Home" />
         <table className="post">
           <thead>
-            <th>
-              {post.title}&nbsp;&nbsp;&nbsp;&nbsp;
-              {post.author}&nbsp;&nbsp;&nbsp;&nbsp;
-              {post.voteScore}&nbsp;&nbsp;&nbsp;&nbsp;
-              <FaThumbsOUp onClick={e => { this.props.votePost(`${post.id}`, "upVote") }} />
-              <FaThumbsODown onClick={e => { this.props.votePost(`${post.id}`, "downVote") }} />
-              <br />
-              <font size="1">{formatTimestamp(`${post.timestamp}`)}</font>
-            </th>
+            <tr>
+              <th>
+                {post.title}&nbsp;&nbsp;&nbsp;&nbsp;
+                {post.author}&nbsp;&nbsp;&nbsp;&nbsp;
+                {post.voteScore}&nbsp;&nbsp;&nbsp;&nbsp;
+                <FaThumbsOUp onClick={e => { this.props.votePost(`${post.id}`, "upVote") }} />
+                <FaThumbsODown onClick={e => { this.props.votePost(`${post.id}`, "downVote") }} />
+                <br />
+                <font size="1">{formatTimestamp(`${post.timestamp}`)}</font>
+              </th>
+            </tr>
           </thead>
           <tbody>
             <tr>

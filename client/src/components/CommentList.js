@@ -55,7 +55,7 @@ class CommentList extends Component {
           </tbody>
           </table>
           <br />
-          <Link className="button" to='/comment/new' onClick={e => { this.props.addComment() }}>Add Comment</Link>
+          <Link className="button" to='/new/comment' onClick={e => { this.props.newComment(`${post.id}`) }}>Add Comment</Link>
         </div>        
       )
     } else {
@@ -79,8 +79,8 @@ const mapDispatchToProps = (dispatch) => {
     getPostComments: (postId) => {
       dispatch(getPostComments(postId));
     },
-    newComment: () => {
-      dispatch(setComment({category: '', author: '', title: '', body: ''}));
+    newComment: (postId) => {
+      dispatch(setComment({parentId: `${postId}`, author: '', body: ''}));
     },
     setComment: (comment) => {
       dispatch(setComment(comment));
