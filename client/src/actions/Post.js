@@ -8,6 +8,7 @@ export const DELETE_POST = "DELETE_POST";
 export const ADD_POST = "ADD_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const SET_POST = "SET_POST";
+export const SORT_POSTS = "SORT_POSTS";
 
 export const getAllPostsSuccessfully = (posts) => 
 (
@@ -121,5 +122,13 @@ export const setPost = (post) =>
   {
     type: SET_POST,
     post
+  }
+);
+
+export const sortPosts = (sortKey) =>
+( 
+  {
+    type: SORT_POSTS,
+    sortKey
   }
 );

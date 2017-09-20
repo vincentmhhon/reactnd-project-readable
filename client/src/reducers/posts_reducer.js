@@ -5,6 +5,7 @@ import {
   DELETE_POST,
   ADD_POST,
   UPDATE_POST,
+  SORT_POSTS,
 } from '../actions/Post'
 
 
@@ -28,6 +29,15 @@ export default function(state = [], action) {
       return state.map(post =>
         (post.id === {...action.post}.id)?{...action.post}:post
       );
+    case SORT_POSTS:
+      return [...state].sort((a, b) => {
+        if (action.sortKey === "") 
+          return state;
+
+        var x= a[action.sortKey];
+        var y = b[action.sortKey];
+        return ( (x > y) ? -1 : ((x < y) ? 1 : 0 ) );
+      }); 
     default:
       return state
   }

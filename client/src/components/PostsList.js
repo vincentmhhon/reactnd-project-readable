@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllPosts,getCategoryPosts, setPost, deletePost, votePost } from '../actions/Post';
+import { getAllPosts,getCategoryPosts, setPost, deletePost, votePost, sortPosts } from '../actions/Post';
 import { formatTimestamp } from '../utils/helper';
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
@@ -23,7 +23,16 @@ class PostsList extends Component {
     if (posts) {
       return (         
         <div>
-          <div><b>{selectCategory} Posts</b></div>
+          <br />
+          <label htmlFor="sortBy">Sort by: </label>
+          <select name="sortBy" id="sortBy" onChange={e => {this.props.sortPosts(e.target.value) }} >
+            <option value="">Please select</option>
+            <option value="timestamp">Posted Date</option>
+            <option value="voteScore">Vote Score</option>
+          </select>
+          <div>
+          <br />
+          <b>{selectCategory} Posts</b></div>
           <table id="posts">
             <thead>
               <tr>
@@ -104,6 +113,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     votePost: (id, option) => {
       dispatch(votePost(id, option));
+    },
+    sortPosts: (sortKey) => {
+      dispatch(sortPosts(sortKey));
     }
   }
 } 
