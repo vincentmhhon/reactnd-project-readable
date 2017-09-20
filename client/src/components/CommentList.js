@@ -7,13 +7,8 @@ import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
 
 class CommentList extends Component {
-  componentWillMount() {
-    this.props.getPostComments(this.props.post.id);
-  }
-
-  componentWillReceiveProps(nextProp) {
-    if (this.props.post.id !== nextProp.post.id)
-      this.props.getPostComments(this.props.post.id);
+  componentDidMount() {
+    this.props.getPostComments(this.props.postId);
   }
 
   render() {

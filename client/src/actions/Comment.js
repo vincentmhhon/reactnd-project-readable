@@ -98,9 +98,9 @@ export const deleteCommentSuccessfully = (comment) =>
   }
 );
 
-export const deleteComment = (comment) => (dispatch) => 
+export const deleteComment = (id) => (dispatch) => 
 (
   api
-    .updateComment(comment)
+    .deleteComment(id)
     .then(comment => dispatch(deleteCommentSuccessfully(comment)))
 );

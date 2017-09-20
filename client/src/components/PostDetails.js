@@ -9,7 +9,7 @@ import CommentList from './CommentList';
 
 class PostDetails extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getPost(this.props.match.params.postId);
   }
 
@@ -40,7 +40,7 @@ class PostDetails extends Component {
             </tr>
           </tbody>
         </table>
-        <CommentList />
+        <CommentList postId={this.props.match.params.postId} />
       </div>
     );
   }

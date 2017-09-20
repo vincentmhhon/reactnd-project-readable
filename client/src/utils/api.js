@@ -143,7 +143,7 @@ export const voteComment = (id, option) =>
     .then(data => data) 
 
 // PUT /comments/:id
-export const updateComment = comment =>
+export const updateComment = (comment) =>
   fetch(`${HOST}/comments/${comment.id}`, {
     method: 'PUT',
     headers: {
@@ -159,7 +159,7 @@ export const updateComment = comment =>
     .then(data => data)
 
 // DELETE /comments/:id
-export const deleteComment = id => 
+export const deleteComment = (id) => 
   fetch(`${HOST}/comments/${id}`, {
     method: 'DELETE',
     headers: {
